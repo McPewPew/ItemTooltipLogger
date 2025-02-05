@@ -1,0 +1,9 @@
+## Interface: 11200
+## Title: Item Tooltip Logger
+## Notes: Captures information from items and their tooltips.
+## Version: 0.1
+## Author: McPewPew
+## SavedVariables: ITLog
+## SavedVariables: ITLSettings
+
+ItemTooltipLogger.lua
