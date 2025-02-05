@@ -2,20 +2,20 @@ DEFAULT_CHAT_FRAME:AddMessage("Data...too much data...slowly going |cffff0000CRA
 -- Load or create tables (.toc SavedVariables)
 ITLog = ITLog or {}
 ITLSettings = ITLSettings or {
-    ItemLinkString = false,
-    ItemType = false,
-    SubType = false,
-    ItemID = true,
-    TooltipText = false,
-    Name = true,
-    StackSize = false,
-    ItemLink = false,
-    Rarity = false,
+   	ItemLinkString = false,
+   	ItemType = false,
+   	SubType = false,
+   	ItemID = true,
+    	TooltipText = false,
+   	Name = true,
+   	StackSize = false,
+    	ItemLink = false,
+	Rarity = false,
 	RequiredLevel = false,
 	Slot = false,
 	Icon = false,	
-    CSVMode = false,
-    LootOnly = false
+    	CSVMode = false,
+    	LootOnly = false
 }
 
 local isLogging = false
@@ -29,13 +29,10 @@ local menuEntries = { "Name", "ItemID", "ItemLink", "ItemLinkString", "RequiredL
 -- check for junk (any non-number string 2 character or less, nil and "" returns "nil")
 local function discardJunk(value)
 	if value == " \n" then
-		DEFAULT_CHAT_FRAME:AddMessage("returned *nil*")
 		return nil
 	elseif value == nil or (string.len(tostring(value)) <= 2 and not tonumber(value)) then
-		DEFAULT_CHAT_FRAME:AddMessage("returned 'nil'")
 		return "nil"
-	else	
-		DEFAULT_CHAT_FRAME:AddMessage("returned value="..value)
+	else
 		return value
 	end
 end
@@ -110,7 +107,6 @@ function logItemInfo()
                         ITLog[itemID].TooltipText = {} -- Use itemID as the key
                         for i = 1, GameTooltip:NumLines() do
                             local TText = _G["GameTooltipTextLeft" .. i]:GetText()
-							DEFAULT_CHAT_FRAME:AddMessage("TText="..TText)
                             if discardJunk(TText) then
                                 table.insert(ITLog[itemID].TooltipText, TText) -- Use itemID as the key
                                 if ITLSettings.csvMode then
